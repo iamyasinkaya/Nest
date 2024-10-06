@@ -7,7 +7,7 @@ namespace Nest.Infrastructure;
 
 public static class InfrastructureServiceExtension
 {
-    public static IServiceCollection InfrastcutureServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection InfrastructureService(this IServiceCollection services, IConfiguration configuration)
     {
         // DbContext injection
         services.AddDbContext<ApplicationDbContext>(options =>
