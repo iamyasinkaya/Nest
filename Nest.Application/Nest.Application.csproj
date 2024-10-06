@@ -6,4 +6,8 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Nest.Infrastructure\Nest.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
