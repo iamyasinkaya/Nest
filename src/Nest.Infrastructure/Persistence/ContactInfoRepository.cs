@@ -11,4 +11,9 @@ public class ContactInfoRepository : BaseRepository<ContactInfo>, IContactInfoRe
     {
         return await _dbSet.Where(ci => ci.HotelId == hotelId).ToListAsync();
     }
+
+    public async Task<int> GetContactInfoCountByLocationAsync(string location)
+    {
+        return await _dbSet.CountAsync(c => c.Content == location && c.Type == ContactType.PhoneNumber);
+    }
 }

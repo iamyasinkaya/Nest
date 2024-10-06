@@ -11,4 +11,9 @@ public class ReportRepository : BaseRepository<Report>, IReportRepository
     {
         return await _dbSet.Where(r => r.Status == status).ToListAsync();
     }
+
+    public async Task<int> GetHotelCountByLocationAsync(string location)
+    {
+        return await _dbSet.CountAsync(h => h.Location == location);
+    }
 }

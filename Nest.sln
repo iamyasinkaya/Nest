@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nest.Infrastructure", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nest.HotelAPI", "src\Nest.HotelAPI\Nest.HotelAPI.csproj", "{A82ABC24-A4FD-4F5C-97AB-D2967ED5707A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nest.ReportAPI", "src\Nest.ReportAPI\Nest.ReportAPI.csproj", "{2EBD758C-1393-41EE-8A1B-140D43471D06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{A82ABC24-A4FD-4F5C-97AB-D2967ED5707A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A82ABC24-A4FD-4F5C-97AB-D2967ED5707A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A82ABC24-A4FD-4F5C-97AB-D2967ED5707A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EBD758C-1393-41EE-8A1B-140D43471D06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EBD758C-1393-41EE-8A1B-140D43471D06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EBD758C-1393-41EE-8A1B-140D43471D06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EBD758C-1393-41EE-8A1B-140D43471D06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +50,7 @@ Global
 		{DF1F080A-26A7-4854-8049-3AF292A26F9E} = {4B5F0D3B-7306-447F-BCC6-3E6C5FD32128}
 		{4B7CD014-C851-4CB3-BEF4-07AE8FABCCD2} = {4B5F0D3B-7306-447F-BCC6-3E6C5FD32128}
 		{A82ABC24-A4FD-4F5C-97AB-D2967ED5707A} = {4B5F0D3B-7306-447F-BCC6-3E6C5FD32128}
+		{2EBD758C-1393-41EE-8A1B-140D43471D06} = {4B5F0D3B-7306-447F-BCC6-3E6C5FD32128}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0B5FA2C-E4C5-4CC6-9D29-09D3DBF055D4}
