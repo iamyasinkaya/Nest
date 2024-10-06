@@ -2,17 +2,14 @@
 
 namespace Nest.Application;
 
-public class ReportService : BaseService<Report>, IReportService
+public class ReportService : IReportService
 {
     private readonly IReportRepository _reportRepository;
 
-    public ReportService(IReportRepository reportRepository) : base(reportRepository)
+    public ReportService(IReportRepository reportRepository)
     {
         _reportRepository = reportRepository;
     }
 
-    public async Task<IEnumerable<Report>> GetReportsByStatusAsync(ReportStatus status)
-    {
-        return await _reportRepository.GetReportsByStatusAsync(status);
-    }
+   
 }

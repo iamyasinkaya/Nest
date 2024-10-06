@@ -2,7 +2,7 @@
 
 namespace Nest.Application;
 
-public interface IManagerService : IBaseService<Manager>
+public interface IManagerService
 {
-    Task<IEnumerable<Manager>> GetByHotelIdAsync(Guid hotelId);
+    
 }

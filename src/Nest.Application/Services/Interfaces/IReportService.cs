@@ -2,7 +2,7 @@
 
 namespace Nest.Application;
 
-public interface IReportService : IBaseService<Report>
+public interface IReportService
 {
-    Task<IEnumerable<Report>> GetReportsByStatusAsync(ReportStatus status);
+   
 }

@@ -2,7 +2,10 @@
 
 namespace Nest.Application;
 
-public interface IHotelService : IBaseService<Hotel>
+public interface IHotelService
 {
-    Task<Hotel> GetHotelWithDetailsAsync(Guid id);
+    Task<Hotel> CreateHotelAsync(CreateHoteldDto addHotel);
+    Task<GetHotelDto> GetHotelWithDetailsAsync(Guid id);
+    Task<Hotel> UpdateHotelAsync(UpdateHotelDto updateHotel);
+    Task<bool> DeleteHotelAsync(Guid id);
 }

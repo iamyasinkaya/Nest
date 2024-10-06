@@ -2,7 +2,7 @@
 
 public enum ContactType
 {
-    PhoneNumber,
-    EmailAddress,
-    Location
+    PhoneNumber = 1,
+    EmailAddress = 2,
+    Location = 3
 }

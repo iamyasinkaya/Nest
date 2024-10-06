@@ -16,7 +16,7 @@ public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : clas
 
     public virtual async Task<TEntity> GetByIdAsync(Guid id) => await _dbSet.FindAsync(id);
     public virtual async Task<IEnumerable<TEntity>> GetAllAsync() => await _dbSet.ToListAsync();
-    public virtual async Task AddAsync(TEntity entity)
+    public virtual async Task CreateAsync(TEntity entity)
     {
         await _dbSet.AddAsync(entity);
         await _context.SaveChangesAsync();

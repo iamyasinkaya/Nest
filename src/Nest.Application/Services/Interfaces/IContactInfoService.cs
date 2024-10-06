@@ -2,7 +2,9 @@
 
 namespace Nest.Application;
 
-public interface IContactInfoService : IBaseService<ContactInfo>
+public interface IContactInfoService 
 {
-    Task<IEnumerable<ContactInfo>> GetByHotelIdAsync(Guid hotelId);
+    Task<ContactInfo> CreateAsync(CreateContactInfoDto contactInfo);
+    Task<GetContactInfoDto> GetContactInfoWithDetailsAsync(Guid id);
+    Task<bool> RemoveContactInfoAsync(Guid id);
 }
