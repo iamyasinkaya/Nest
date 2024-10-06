@@ -17,12 +17,19 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.Id, opt => opt.Ignore()); // ID değiştirilmemeli, ignore ediyoruz.
 
         // GetHotelDto'dan Hotel nesnesine dönüşüm
-        CreateMap<GetHotelDto, Hotel>().ReverseMap();
+        CreateMap<Hotel, GetHotelDto>()
+     .ForMember(dest => dest.ContactInfo, opt => opt.MapFrom(src => src.ContactInfo))
+     .ReverseMap();
 
 
 
         CreateMap<CreateContactInfoDto, ContactInfo>().ForMember(dest=>dest.Id, opt => opt.Ignore());
 
-        CreateMap<GetContactInfoDto, ContactInfo>().ReverseMap();
+        CreateMap<ContactInfo, GetContactInfoDto>().ReverseMap();
+
+
+
+        CreateMap<CreateManagerDto , Manager>()
+            .ForMember(dest=>dest.Id, opt=>opt.Ignore());
     }
 }

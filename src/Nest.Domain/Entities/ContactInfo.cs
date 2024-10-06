@@ -1,4 +1,6 @@
-﻿namespace Nest.Domain;
+﻿using System.Text.Json.Serialization;
+
+namespace Nest.Domain;
 
 public class ContactInfo
 {
@@ -8,5 +10,8 @@ public class ContactInfo
 
     // Foreign Key
     public Guid HotelId { get; set; }
+
+    [JsonIgnore]
     public Hotel Hotel { get; set; }
+ 
 }

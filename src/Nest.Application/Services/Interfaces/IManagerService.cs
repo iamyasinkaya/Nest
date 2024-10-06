@@ -4,5 +4,5 @@ namespace Nest.Application;
 
 public interface IManagerService
 {
-    
+    Task<Manager> CreateManagerAsync(CreateManagerDto manager);
 }
