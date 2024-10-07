@@ -3,16 +3,16 @@ using Nest.Domain;
 
 namespace Nest.Infrastructure;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationHotelDbContext : DbContext
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    public ApplicationHotelDbContext(DbContextOptions<ApplicationHotelDbContext> options) : base(options)
     {
     }
 
     public DbSet<Hotel> Hotels { get; set; }
     public DbSet<ContactInfo> ContactInfos { get; set; }
     public DbSet<Manager> Managers { get; set; }
-    public DbSet<Report> Reports { get; set; }
+    
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -58,17 +58,7 @@ public class ApplicationDbContext : DbContext
                 .HasMaxLength(100);
         });
 
-        // Report Configuration
-        modelBuilder.Entity<Report>(entity =>
-        {
-            entity.HasKey(r => r.Id);
-            entity.Property(r => r.RequestedDate)
-                .IsRequired();
-            entity.Property(r => r.Status)
-                .IsRequired();
-            entity.Property(r => r.Location)
-                .IsRequired()
-                .HasMaxLength(255);
-        });
+        
+
     }
 }

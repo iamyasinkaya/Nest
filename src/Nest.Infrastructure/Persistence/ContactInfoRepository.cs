@@ -3,9 +3,9 @@ using Nest.Domain;
 
 namespace Nest.Infrastructure;
 
-public class ContactInfoRepository : BaseRepository<ContactInfo>, IContactInfoRepository
+public class ContactInfoRepository : BaseHotelRepository<ContactInfo>, IContactInfoRepository
 {
-    public ContactInfoRepository(ApplicationDbContext context) : base(context) { }
+    public ContactInfoRepository(ApplicationHotelDbContext context) : base(context) { }
 
     public async Task<IEnumerable<ContactInfo>> GetByHotelIdAsync(Guid hotelId)
     {

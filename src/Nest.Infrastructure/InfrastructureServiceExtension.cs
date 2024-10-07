@@ -9,10 +9,16 @@ public static class InfrastructureServiceExtension
 {
     public static IServiceCollection InfrastructureService(this IServiceCollection services, IConfiguration configuration)
     {
-        // DbContext Injections
-        services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
-                ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection")))
+        // DbContext Hotel Injections
+        services.AddDbContext<ApplicationHotelDbContext>(options =>
+            options.UseMySql(configuration.GetConnectionString("DefaultHotelConnection"),
+                ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultHotelConnection")))
+        );
+
+        // DbContext Report Injections
+        services.AddDbContext<ApplicationReportDbContext>(options =>
+            options.UseMySql(configuration.GetConnectionString("DefaultReportConnection"),
+                ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultReportConnection")))
         );
 
         // Repository Injections

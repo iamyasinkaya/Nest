@@ -3,9 +3,9 @@ using Nest.Domain;
 
 namespace Nest.Infrastructure;
 
-public class ReportRepository : BaseRepository<Report>, IReportRepository
+public class ReportRepository : BaseReportRepository<Report>, IReportRepository
 {
-    public ReportRepository(ApplicationDbContext context) : base(context) { }
+    public ReportRepository(ApplicationReportDbContext context) : base(context) { }
 
     public async Task<IEnumerable<Report>> GetReportsByStatusAsync(ReportStatus status)
     {

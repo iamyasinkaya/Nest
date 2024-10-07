@@ -3,9 +3,9 @@ using Nest.Domain;
 
 namespace Nest.Infrastructure;
 
-public class ManagerRepository : BaseRepository<Manager>, IManagerRepository
+public class ManagerRepository : BaseHotelRepository<Manager>, IManagerRepository
 {
-    public ManagerRepository(ApplicationDbContext context) : base(context) { }
+    public ManagerRepository(ApplicationHotelDbContext context) : base(context) { }
 
     public async Task<IEnumerable<Manager>> GetByHotelIdAsync(Guid hotelId)
     {
