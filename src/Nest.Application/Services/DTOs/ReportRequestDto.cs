@@ -2,5 +2,5 @@
 
 public class ReportRequestDto
 {
-    public string Location { get; set; }
+    public int LocationCode { get; set; }
 }

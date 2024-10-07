@@ -25,7 +25,7 @@ public class HotelsController : ControllerBase
     public async Task<IActionResult> CreateAsync([FromBody] CreateHoteldDto hotel)
     {
         var newHotel = await _hotelService.CreateHotelAsync(hotel);
-        return CreatedAtAction(nameof(GetDetailsAsync), new { id = newHotel.Id }, newHotel);
+        return Created("GetDetailsAsync", newHotel.Id);
     }
 
     [HttpPut("{id}")]

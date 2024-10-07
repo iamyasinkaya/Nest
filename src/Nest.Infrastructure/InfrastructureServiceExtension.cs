@@ -11,14 +11,14 @@ public static class InfrastructureServiceExtension
     {
         // DbContext Hotel Injections
         services.AddDbContext<ApplicationHotelDbContext>(options =>
-            options.UseMySql(configuration.GetConnectionString("DefaultHotelConnection"),
-                ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultHotelConnection")))
+            options.UseMySql(configuration.GetConnectionString("HotelDb"),
+                ServerVersion.AutoDetect(configuration.GetConnectionString("HotelDb")))
         );
 
         // DbContext Report Injections
         services.AddDbContext<ApplicationReportDbContext>(options =>
-            options.UseMySql(configuration.GetConnectionString("DefaultReportConnection"),
-                ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultReportConnection")))
+            options.UseMySql(configuration.GetConnectionString("ReportingDb"),
+                ServerVersion.AutoDetect(configuration.GetConnectionString("ReportingDb")))
         );
 
         // Repository Injections
@@ -27,18 +27,11 @@ public static class InfrastructureServiceExtension
         services.AddScoped<IManagerRepository, ManagerRepository>();
         services.AddScoped<IReportRepository, ReportRepository>();
 
-        // RabbitMQ Settings
-        services.Configure<RabbitMQSettings>(options =>
-        {
-            options.HostName = configuration["RabbitMQ:HostName"];
-            options.UserName = configuration["RabbitMQ:UserName"];
-            options.Password = configuration["RabbitMQ:Password"];
-            options.QueueName = configuration["RabbitMQ:QueueName"];
-        });
+        // RabbitMQSettings'i appsettings.json'dan yapılandır
+        services.Configure<RabbitMQSettings>(configuration.GetSection("RabbitMQSettings"));
 
-
-        // RabbitMq Injections
-        services.AddSingleton<IMessageQueueService, RabbitMqService>();
+        // RabbitMQService'i singleton olarak ekle
+        services.AddSingleton<IRabbitMQService, RabbitMQService>();
 
         return services;
     }

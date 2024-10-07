@@ -5,7 +5,7 @@ namespace Nest.Infrastructure;
 
 public class ApplicationReportDbContext : DbContext
 {
-    public ApplicationReportDbContext(DbContextOptions<ApplicationHotelDbContext> options) : base(options)
+    public ApplicationReportDbContext(DbContextOptions<ApplicationReportDbContext> options) : base(options)
     {
 
     }

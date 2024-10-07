@@ -5,5 +5,5 @@ public class RabbitMQSettings
     public string HostName { get; set; }
     public string UserName { get; set; }
     public string Password { get; set; }
-    public string QueueName { get; set; }
+    public List<string> Queues { get; set; } = new();
 }

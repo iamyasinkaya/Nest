@@ -25,6 +25,14 @@ public class ContactInfoService : IContactInfoService
             throw new KeyNotFoundException("Hotel not found with the given ID.");
         }
 
+        if (contactInfo.Type == ContactType.Location)
+        {
+            if (contactInfo.LocationCode == 0)
+            {
+                throw new Exception("Location Code is not be empty.");
+            }
+        }
+
         ContactInfo newContactInfo = _mapper.Map<ContactInfo>(contactInfo);
 
         await _contactInfoRepository.CreateAsync(newContactInfo);

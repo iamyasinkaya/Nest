@@ -1,59 +1,47 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Nest.Application;
-using Nest.Domain;
 using System.Text;
 
-namespace Nest.ReportAPI;
-
-[ApiController]
-[Route("api/reports")]
-public class ReportController : ControllerBase
+namespace Nest.ReportAPI
 {
-    private readonly IReportService _reportService;
-    private readonly IMessageQueueService _messageQueueService;
-
-    public ReportController(IReportService reportService, IMessageQueueService messageQueueService)
+    [ApiController]
+    [Route("api/reports")]
+    public class ReportController : ControllerBase
     {
-        _reportService = reportService;
-        _messageQueueService = messageQueueService;
-    }
+        private readonly IReportService _reportService;
+        
 
-    [HttpPost("request")]
-    public async Task<IActionResult> RequestAsync([FromBody] ReportRequestDto reportRequest)
-    {
-
-        var report = await _reportService.RequestReportAsync(reportRequest);
-
-        await _messageQueueService.SendMessageAsync(report);
-
-        return Accepted(new { ReportId = report.Id });
-    }
-
-    [HttpGet("{reportId}/download")]
-    public async Task<IActionResult> DownloadAsync(Guid reportId)
-    {
-        var report = await _reportService.GetReportByIdAsync(reportId);
-
-        if (report == null)
+        public ReportController(IReportService reportService)
         {
-            return NotFound();
+            _reportService = reportService;
+            
         }
 
-        if (report.Status != ReportStatus.Completed)
+        [HttpPost("request")]
+        public async Task<IActionResult> RequestAsync([FromQuery] ReportRequestDto reportRequest)
         {
-            return BadRequest("Rapor henüz tamamlanmadı.");
+            var report = await _reportService.RequestReportAsync(reportRequest);
+            return Accepted(new { ReportId = report.Id });
         }
 
-        var reportContent = new StringBuilder();
-        reportContent.AppendLine($"Rapor ID: {report.Id}");
-        reportContent.AppendLine($"Rapor Talep Tarihi: {report.RequestedDate}");
-        reportContent.AppendLine($"Konum: {report.Location}");
-        reportContent.AppendLine($"Otellerin Sayısı: {report.HotelCount}");
-        reportContent.AppendLine($"Telefon Numaraları Sayısı: {report.PhoneNumberCount}");
+        [HttpGet("download-report/{reportId}")]
+        public async Task<IActionResult> DownloadReportAsync(Guid reportId)
+        {
+           
 
-        var byteArray = Encoding.UTF8.GetBytes(reportContent.ToString());
-        var stream = new MemoryStream(byteArray);
+           
+            string reportContent = await _reportService.GenerateReportAsync(reportId);
 
-        return File(stream, "text/plain", $"Rapor_{reportId}.txt");
+            
+            if (string.IsNullOrEmpty(reportContent))
+            {
+                return NotFound("Report not found.");
+            }
+
+            
+            var fileBytes = Encoding.UTF8.GetBytes(reportContent);
+            return File(fileBytes, "text/plain", $"Report_{reportId}.txt");
+        }
+
     }
 }

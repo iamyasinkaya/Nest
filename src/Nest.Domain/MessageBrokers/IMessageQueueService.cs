@@ -1,6 +1,7 @@
 ﻿namespace Nest.Domain;
 
-public interface IMessageQueueService
+public interface IRabbitMQService
 {
-    Task SendMessageAsync<T>(T message);
+    void Publish<T>(string queueName, T message);
+    Task<Report> GetReportAsync(string queueName, Guid reportId, TimeSpan timeout);
 }

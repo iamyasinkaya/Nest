@@ -23,7 +23,9 @@ public class MappingProfile : Profile
 
 
         // CreateContactInfoDto'dan ContactInfo nesnesine dönüşüm
-        CreateMap<CreateContactInfoDto, ContactInfo>().ForMember(dest => dest.Id, opt => opt.Ignore());
+        CreateMap<CreateContactInfoDto, ContactInfo>()
+    .ForMember(dest => dest.Id, opt => opt.Ignore());
+
 
 
         // ContactInfo'dan GetContactInfoDto nesnesine dönüşüm
