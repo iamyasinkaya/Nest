@@ -12,7 +12,7 @@ public class ApplicationHotelDbContext : DbContext
     public DbSet<Hotel> Hotels { get; set; }
     public DbSet<ContactInfo> ContactInfos { get; set; }
     public DbSet<Manager> Managers { get; set; }
-    
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -58,7 +58,7 @@ public class ApplicationHotelDbContext : DbContext
                 .HasMaxLength(100);
         });
 
-        
+
 
     }
 }

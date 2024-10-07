@@ -7,7 +7,7 @@ namespace Nest.HotelAPI;
 [ApiController]
 public class ManagersController : ControllerBase
 {
-	private readonly IManagerService _managerService;
+    private readonly IManagerService _managerService;
 
     public ManagersController(IManagerService managerService)
     {
@@ -17,11 +17,11 @@ public class ManagersController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateAsync([FromBody] CreateManagerDto manager)
     {
-		try
-		{
-			var newManager = await _managerService.CreateManagerAsync(manager);
-			return Ok(newManager.Id);
-		}
+        try
+        {
+            var newManager = await _managerService.CreateManagerAsync(manager);
+            return Ok(newManager.Id);
+        }
         catch (KeyNotFoundException ex)
         {
             return NotFound(new { message = ex.Message });

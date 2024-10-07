@@ -26,7 +26,7 @@ public class HotelService : IHotelService
     public async Task<GetHotelDto> GetHotelWithDetailsAsync(Guid id)
     {
         var hotel = await _hotelRepository.GetHotelWithDetailsAsync(id);
-        var getHotelDto =_mapper.Map<GetHotelDto>(hotel);
+        var getHotelDto = _mapper.Map<GetHotelDto>(hotel);
         return getHotelDto;
     }
 

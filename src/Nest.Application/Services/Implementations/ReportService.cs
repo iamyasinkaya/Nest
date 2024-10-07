@@ -18,16 +18,16 @@ public class ReportService : IReportService
 
     public async Task<Report> RequestReportAsync(ReportRequestDto reportRequest)
     {
-       
+
         var location = reportRequest.Location; // location bilgisi ReportRequestDto'dan alınacak
 
-       
+
         var hotelCount = await _reportRepository.GetHotelCountByLocationAsync(location);
 
-        
+
         var contactInfoCount = await _contactInfoRepository.GetContactInfoCountByLocationAsync(location);
 
-       
+
         var report = new Report
         {
             Id = Guid.NewGuid(),

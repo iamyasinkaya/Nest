@@ -2,7 +2,7 @@
 
 namespace Nest.Application;
 
-public interface IContactInfoService 
+public interface IContactInfoService
 {
     Task<ContactInfo> CreateAsync(CreateContactInfoDto contactInfo);
     Task<GetContactInfoDto> GetContactInfoWithDetailsAsync(Guid id);

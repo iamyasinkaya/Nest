@@ -1,8 +1,8 @@
-﻿using Nest.Domain;
-using System.Text.Json;
-using System.Text;
+﻿using Microsoft.Extensions.Options;
+using Nest.Domain;
 using RabbitMQ.Client;
-using Microsoft.Extensions.Options;
+using System.Text;
+using System.Text.Json;
 
 namespace Nest.Infrastructure;
 

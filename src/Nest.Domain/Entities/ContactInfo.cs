@@ -13,5 +13,5 @@ public class ContactInfo
 
     [JsonIgnore]
     public Hotel Hotel { get; set; }
- 
+
 }

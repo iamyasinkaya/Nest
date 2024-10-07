@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Nest.Application;
-using Nest.Domain;
 
 namespace Nest.HotelAPI;
 
@@ -16,21 +15,21 @@ public class HotelsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetHotelWithDetails(Guid id)
+    public async Task<IActionResult> GetDetailsAsync(Guid id)
     {
         var hotel = await _hotelService.GetHotelWithDetailsAsync(id);
         return hotel != null ? Ok(hotel) : NotFound();
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddHotel([FromBody] CreateHoteldDto hotel)
+    public async Task<IActionResult> CreateAsync([FromBody] CreateHoteldDto hotel)
     {
         var newHotel = await _hotelService.CreateHotelAsync(hotel);
-        return CreatedAtAction(nameof(GetHotelWithDetails), new { id = newHotel.Id }, newHotel);
+        return CreatedAtAction(nameof(GetDetailsAsync), new { id = newHotel.Id }, newHotel);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateHotel(Guid id, [FromBody] UpdateHotelDto hotel)
+    public async Task<IActionResult> UpdateAsync(Guid id, [FromBody] UpdateHotelDto hotel)
     {
         if (id != hotel.Id) return BadRequest();
         await _hotelService.UpdateHotelAsync(hotel);
@@ -38,7 +37,7 @@ public class HotelsController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteHotel(Guid id)
+    public async Task<IActionResult> DeleteAsync(Guid id)
     {
         await _hotelService.DeleteHotelAsync(id);
         return NoContent();

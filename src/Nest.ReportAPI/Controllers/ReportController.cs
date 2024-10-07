@@ -19,7 +19,7 @@ public class ReportController : ControllerBase
     }
 
     [HttpPost("request")]
-    public async Task<IActionResult> RequestReport([FromBody] ReportRequestDto reportRequest)
+    public async Task<IActionResult> RequestAsync([FromBody] ReportRequestDto reportRequest)
     {
 
         var report = await _reportService.RequestReportAsync(reportRequest);
@@ -30,7 +30,7 @@ public class ReportController : ControllerBase
     }
 
     [HttpGet("{reportId}/download")]
-    public async Task<IActionResult> DownloadReport(Guid reportId)
+    public async Task<IActionResult> DownloadAsync(Guid reportId)
     {
         var report = await _reportService.GetReportByIdAsync(reportId);
 

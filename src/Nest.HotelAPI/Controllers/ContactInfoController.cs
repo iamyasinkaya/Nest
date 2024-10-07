@@ -17,19 +17,19 @@ public class ContactInfoController : ControllerBase
 
     [HttpGet("{id}")]
 
-    public async Task<IActionResult> GetContactInfoWithDetails(Guid id)
+    public async Task<IActionResult> GetDetailsAsync(Guid id)
     {
         var contactInfo = await _contactInfoService.GetContactInfoWithDetailsAsync(id);
         return contactInfo != null ? Ok(contactInfo) : NotFound();
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateHotelAsync([FromBody] CreateContactInfoDto contactInfo)
+    public async Task<IActionResult> CreateAsync([FromBody] CreateContactInfoDto contactInfo)
     {
         try
         {
             var newContactInfo = await _contactInfoService.CreateAsync(contactInfo);
-            return Created(nameof(GetContactInfoWithDetails), newContactInfo.Id);
+            return Created(nameof(GetDetailsAsync), newContactInfo.Id);
         }
         catch (KeyNotFoundException ex)
         {

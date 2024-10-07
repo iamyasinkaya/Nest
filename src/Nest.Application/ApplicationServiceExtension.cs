@@ -13,12 +13,12 @@ public static class ApplicationServiceExtension
         services.AddScoped<IManagerService, ManagerService>();
         services.AddScoped<IReportService, ReportService>();
 
-        
+
         // AutoMapper Injections
         var mappingConfig = new MapperConfiguration(cfg =>
         {
-            
-            cfg.AddProfile(new MappingProfile()); 
+
+            cfg.AddProfile(new MappingProfile());
         });
         IMapper mapper = mappingConfig.CreateMapper();
         services.AddSingleton(mapper);

@@ -7,7 +7,7 @@ public class ApplicationReportDbContext : DbContext
 {
     public ApplicationReportDbContext(DbContextOptions<ApplicationHotelDbContext> options) : base(options)
     {
-            
+
     }
 
     public DbSet<Report> Reports { get; set; }
