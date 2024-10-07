@@ -26,7 +26,7 @@ namespace Nest.Infrastructure
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
 
-            
+
             foreach (var queueName in _settings.Queues)
             {
                 DeclareQueue(queueName);
@@ -41,7 +41,7 @@ namespace Nest.Infrastructure
             }
             catch (Exception)
             {
-                
+
                 _channel.QueueDeclare(queue: queueName,
                                       durable: true,
                                       exclusive: false,
