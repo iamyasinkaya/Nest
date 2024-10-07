@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Nest.Domain;
-using System.Collections.Concurrent;
 
 namespace Nest.Application
 {

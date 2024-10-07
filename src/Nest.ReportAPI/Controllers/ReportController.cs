@@ -9,12 +9,12 @@ namespace Nest.ReportAPI
     public class ReportController : ControllerBase
     {
         private readonly IReportService _reportService;
-        
+
 
         public ReportController(IReportService reportService)
         {
             _reportService = reportService;
-            
+
         }
 
         [HttpPost("request")]
@@ -27,18 +27,18 @@ namespace Nest.ReportAPI
         [HttpGet("download-report/{reportId}")]
         public async Task<IActionResult> DownloadReportAsync(Guid reportId)
         {
-           
 
-           
+
+
             string reportContent = await _reportService.GenerateReportAsync(reportId);
 
-            
+
             if (string.IsNullOrEmpty(reportContent))
             {
                 return NotFound("Report not found.");
             }
 
-            
+
             var fileBytes = Encoding.UTF8.GetBytes(reportContent);
             return File(fileBytes, "text/plain", $"Report_{reportId}.txt");
         }

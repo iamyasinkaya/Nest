@@ -156,7 +156,7 @@ public class ApplicationHotelDbContext : DbContext
 
 
                 );
-                
+
         });
 
         // Manager Configuration
@@ -166,10 +166,10 @@ public class ApplicationHotelDbContext : DbContext
             entity.Property(m => m.FirstName)
                 .IsRequired()
                 .HasMaxLength(100);
-    entity.Property(m => m.LastName)
-                .IsRequired()
-                .HasMaxLength(100);
-});
+            entity.Property(m => m.LastName)
+                        .IsRequired()
+                        .HasMaxLength(100);
+        });
 
 
 

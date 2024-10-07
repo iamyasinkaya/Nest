@@ -12,5 +12,5 @@ public class ReportRepository : BaseReportRepository<Report>, IReportRepository
         return await _dbSet.Where(r => r.Status == status).ToListAsync();
     }
 
-   
+
 }
